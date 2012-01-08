@@ -3,7 +3,7 @@ class CreateSettings < ActiveRecord::Migration
     create_table :settings do |t|
       t.integer :user_id
       t.integer :preference_id
-      t.String :value
+      t.string :value
 
       t.timestamps
     end

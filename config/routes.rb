@@ -2,6 +2,10 @@ Colorbars::Application.routes.draw do
   devise_for :users
 
   get "pages/home"
+  resource :setting do
+    get 'show'
+    post 'saveprefs'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,24 +4,26 @@
 <table>
 <tr><td>
 <div id="customWidget">
-					<div id="colorSelector1"><div style="background-color: #00ff00">Color 1</div></div>
+					<div id="colorSelector1"><div id="cs1sub" style="background-color: rgb(<%= @colors[1] %>)">Color 1</div></div>
 	                <div id="colorpickerHolder1"></div>
 </TD><TD>
-<div id="customWidget"><div id="colorSelector2"><div style="background-color: #00ff00">Color 2</div></div>
+<div id="customWidget"><div id="colorSelector2"><div id="cs2sub" style="background-color:rgb(<%= @colors[2] %>)">Color 2</div></div>
 	                <div id="colorpickerHolder2"></div>
 </td>
 <TD>
-<div id="customWidget"><div id="colorSelector3"><div style="background-color: #00ff00">Color 3</div></div>
+<div id="customWidget"><div id="colorSelector3"><div id="cs3sub" style="background-color:rgb(<%= @colors[3] %>)">Color 3</div></div>
 	                <div id="colorpickerHolder3"></div>
 </td>
 <TD>
-<div id="customWidget"><div id="colorSelector4"><div style="background-color: #00ff00">Color 4</div></div>
+<div id="customWidget"><div id="colorSelector4"><div id="cs4sub" style="background-color:rgb(<%= @colors[4] %>)">Color 4</div></div>
 	                <div id="colorpickerHolder4"></div>
-</td></TR></TABLE>
-<INPUT TYPE=hidden id=color1rgb value="0,255,0">
-<INPUT TYPE=hidden id=color2rgb value="0,255,0">
-<INPUT TYPE=hidden id=color3rgb value="0,255,0">
-<INPUT TYPE=hidden id=color4rgb value="0,255,0">
+</td><td>&nbsp;&nbsp;
+<% if user_signed_in? %>
+<INPUT TYPE=button VALUE="Save Preferences" onclick=prefsave()></TD>
+<% end %>
+<TD ID=result></TD></TR></TABLE>
+
+<% (1..4).each do |i| %><INPUT TYPE=hidden id=color<%= i %>rgb value="0,255,0"><% end %>
 
 <TABLE border=1 WIDTH=100%>
 

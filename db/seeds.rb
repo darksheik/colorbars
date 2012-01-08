@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Preference.create(name: 'Color 1')
+Preference.create(name: 'Color 2')
+Preference.create(name: 'Color 3')
+Preference.create(name: 'Color 4')

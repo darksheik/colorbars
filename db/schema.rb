@@ -11,9 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111228154900) do
+ActiveRecord::Schema.define(:version => 20120102222621) do
 
   create_table "preferences", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "preference_id"
+    t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
