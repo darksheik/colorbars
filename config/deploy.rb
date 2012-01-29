@@ -21,9 +21,7 @@ after "deploy:bundle_gems", :roles => [:web, :db, :app] do
   run "chmod 755 #{release_path}/public -R" 
 end
 after "deploy:bundle_gems", "deploy:restart"
-after 'deploy:update_code' do
-  run "cd #{release_path}; RAILS_ENV=production rake assets:precompile"
-end
+
 
 # If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
