@@ -1,0 +1,23 @@
+body {
+  background-color:blue;
+  color:white;
+}
+
+a:link {color:yellow;}      /* unvisited link */
+a:visited {color:yellow;}  /* visited link */
+a:hover {color:green;}  /* mouse over link */
+a:active {color:yellow;}  /* selected link */
+
+ul.hmenu {
+  list-style: none;	
+  margin: 0 0 2em;
+  padding: 3;
+}
+
+td {
+  height: 20px;
+}
+ul.hmenu li {
+  padding: 3px;
+  display: inline;  
+}
