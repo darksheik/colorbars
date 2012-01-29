@@ -7,6 +7,8 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 gem 'devise'
+gem 'capistrano'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -33,4 +35,7 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+end
+group :production do
+  gem 'therubyracer'
 end
