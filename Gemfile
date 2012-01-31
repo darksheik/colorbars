@@ -8,7 +8,6 @@ gem 'rails', '3.1.1'
 gem 'sqlite3'
 gem 'devise'
 gem 'capistrano'
-gem 'activesupport'
 
 
 # Gems used only for assets and not required
@@ -39,4 +38,5 @@ group :test do
 end
 group :production do
   gem 'therubyracer'
+  gem 'activesupport'
 end
