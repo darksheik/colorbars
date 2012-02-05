@@ -21,13 +21,21 @@ after "deploy:bundle_gems", :roles => [:web, :db, :app] do
   run "chmod 755 #{release_path}/public -R" 
 end
 after "deploy:bundle_gems", "deploy:precompile"
-after "deploy:precompile_assets", "deploy:restart"
+after "deploy:precompile", "deploy:dbmigrate"
+after "deploy:dbmigrate", "deploy:copyht"
+after "deploy:copyht", "deploy:restart"
 
 
 # If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
    task :bundle_gems do
      run "cd #{deploy_to}/current && bundle install vendor/gems"
+   end
+   task :copyht do
+     run "cd /home/dpflas/ && cp htac-passenger public_html/colorbars/.htaccess"
+   end
+   task :dbmigrate do
+     run "cd #{deploy_to}/current && rake db:migrate RAILS_ENV=#{rails_env}"
    end
   task :precompile, :roles => :app do
     run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
