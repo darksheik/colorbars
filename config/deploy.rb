@@ -20,13 +20,17 @@ after "deploy", "deploy:bundle_gems"
 after "deploy:bundle_gems", :roles => [:web, :db, :app] do
   run "chmod 755 #{release_path}/public -R" 
 end
-after "deploy:bundle_gems", "deploy:restart"
+after "deploy:bundle_gems", "deploy:precompile_assets"
+after "deploy:precompile_assets", "deploy:restart"
 
 
 # If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
    task :bundle_gems do
      run "cd #{deploy_to}/current && bundle install vendor/gems"
+   end
+   task :precompile_assets do
+     "bundle exec assets:precompile"
    end
    task :start do ; end
    task :stop do ; end

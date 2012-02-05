@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 	@setting = Setting.find(:all, :conditions => { :preference_id => i, :user_id => current_user}).first
 	if (@setting == nil) then @colors[i] = '0,255,0' else @colors[i] = @setting.value end
       else
+	# Default color
 	@colors[i] = '0,255,0'
       end
     end

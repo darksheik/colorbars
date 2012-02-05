@@ -1,28 +1,22 @@
 
 
-<table>
-<tr><td>
-<div id="customWidget">
-					<div id="colorSelector1"><div id="cs1sub" style="background-color: rgb(<%= @colors[1] %>)">Color 1</div></div>
-	                <div id="colorpickerHolder1"></div>
-</TD><TD>
-<div id="customWidget"><div id="colorSelector2"><div id="cs2sub" style="background-color:rgb(<%= @colors[2] %>)">Color 2</div></div>
-	                <div id="colorpickerHolder2"></div>
-</td>
-<TD>
-<div id="customWidget"><div id="colorSelector3"><div id="cs3sub" style="background-color:rgb(<%= @colors[3] %>)">Color 3</div></div>
-	                <div id="colorpickerHolder3"></div>
-</td>
-<TD>
-<div id="customWidget"><div id="colorSelector4"><div id="cs4sub" style="background-color:rgb(<%= @colors[4] %>)">Color 4</div></div>
-	                <div id="colorpickerHolder4"></div>
-</td><td>&nbsp;&nbsp;
+<table width=100%>
+<tr>
+<% (1..4).each do |i| %>
+<td>
+<div id="customWidget<%= i %>"><div id="colorSelector<%= i %>"><div id="cs<%= i %>sub" class=colsel style="background-color: rgb(<%= @colors[i] %>)">Color <%= i %></div></div>
+	                <div id="colorpickerHolder<%= i %>"></div>
+</TD>
+<INPUT TYPE=hidden id=color<%= i %>rgb value="0,255,0">
+<% end %>
+<td>&nbsp;&nbsp;
 <% if user_signed_in? %>
 <INPUT TYPE=button VALUE="Save Preferences" onclick=prefsave()></TD>
 <% end %>
-<TD ID=result></TD></TR></TABLE>
+<TD ID=result></TD>
+<td class=description align=right width=300>Click on the color labels to the left and pick some colors to see the beauty that ensues.  If you are logged in, you can save the chosen colors.</td></TR></TABLE>
 
-<% (1..4).each do |i| %><INPUT TYPE=hidden id=color<%= i %>rgb value="0,255,0"><% end %>
+<% (1..4).each do |i| %><% end %>
 
 <TABLE border=1 WIDTH=100%>
 

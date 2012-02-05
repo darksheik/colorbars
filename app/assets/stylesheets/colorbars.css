@@ -21,3 +21,17 @@ ul.hmenu li {
   padding: 3px;
   display: inline;  
 }
+
+.description {
+  text-align:right;
+  font-size:12px;
+}
+
+.colsel {
+  padding: 3px 3px 3px 3px;
+  text-align:center;
+  color:black;
+  font-family:Arial,Tahoma;
+  font-style:bold;
+  text-shadow:-1px -1px white, 1px 1px #333333;
+}
