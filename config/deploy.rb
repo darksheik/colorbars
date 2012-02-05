@@ -20,7 +20,7 @@ after "deploy", "deploy:bundle_gems"
 after "deploy:bundle_gems", :roles => [:web, :db, :app] do
   run "chmod 755 #{release_path}/public -R" 
 end
-after "deploy:bundle_gems", "deploy:precompile_assets"
+after "deploy:bundle_gems", "deploy:precompile"
 after "deploy:precompile_assets", "deploy:restart"
 
 
@@ -29,9 +29,10 @@ after "deploy:precompile_assets", "deploy:restart"
    task :bundle_gems do
      run "cd #{deploy_to}/current && bundle install vendor/gems"
    end
-   task :precompile_assets do
-     "bundle exec assets:precompile"
-   end
+  task :precompile, :roles => :app do
+    run "cd #{release_path} && rake RAILS_ENV=#{rails_env} assets:precompile"
+  end
+
    task :start do ; end
    task :stop do ; end
    task :restart, :roles => :app, :except => { :no_release => true } do
